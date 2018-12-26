@@ -12,17 +12,14 @@ import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 })
 export class PlanetComponent implements OnInit {
 
-  planets:Planets;
+  planets:Planets = {"count": null, "results":null, "next":null};
 
   constructor(private planetsService:PlanetsService, private route:ActivatedRoute) {
     planetsService.getPlanets().subscribe(planets=>this.planets=planets);
   }
 
   getPlanets():Planet[] {
-    if(this.planets) {
-      return this.planets.results;
-    }
-    return;
+    return this.planets.results;
   }
 
   ngOnInit() {
