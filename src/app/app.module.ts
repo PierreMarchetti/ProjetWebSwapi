@@ -4,11 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PlanetsListComponent } from './planets-list/planets-list.component';
 import { PlanetComponent } from './planet/planet.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PlanetsListComponent,
     PlanetComponent
   ],
   imports: [

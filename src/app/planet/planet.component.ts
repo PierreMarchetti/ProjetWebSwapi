@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Planet} from '../models/planet';
-import {Planets} from '../models/planets';
-import {PlanetsService} from '../services/planets.service';
+import {PlanetService} from '../services/planet.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 
@@ -12,18 +11,13 @@ import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 })
 export class PlanetComponent implements OnInit {
 
-  planets:Planets = {"count": null, "results":null, "next":null};
+  planet:Planet;
 
-  constructor(private planetsService:PlanetsService, private route:ActivatedRoute) {
-    planetsService.getPlanets().subscribe(planets=>this.planets=planets);
-  }
-
-  getPlanets():Planet[] {
-    return this.planets.results;
+  constructor(private planetService:PlanetService, private route:ActivatedRoute) {
+    planetService.getPlanet(this.route.snapshot.params.id).subscribe(data=>this.planet=data);
   }
 
   ngOnInit() {
-
   }
 
 }

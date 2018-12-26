@@ -2,18 +2,16 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Planet} from '../models/planet';
-import {Planets} from '../models/planets';
-
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlanetsService {
+export class PlanetService {
 
   constructor(private httpClient:HttpClient) { }
 
-  //recupère les planètes de l'api
-  getPlanets() {
-    return this.httpClient.get<Planets>(`https://swapi.co/api/planets/`);
+  //recupère la planète désirée de l'api
+  getPlanet(id:number) {
+    return this.httpClient.get<Planet>(`https://cors-anywhere.herokuapp.com/https://swapi.co/api/planets/`+id);
   }
 }
