@@ -6,5 +6,6 @@ export class Planet {
   terrain?:string;
   population?:number;
   residents?:string[];
+  residentsName?:any[];
   film?:string[];
 }

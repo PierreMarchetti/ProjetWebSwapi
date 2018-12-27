@@ -1,0 +1,20 @@
+<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark" id ="navbar">
+  <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed" aria-expanded="false">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="">Projet Web Swapi</a>
+  <div class="collapse navbar-collapse" [collapse]="isCollapsed">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="planets">Planètes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="peoples">Personnages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="search">Recherche</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

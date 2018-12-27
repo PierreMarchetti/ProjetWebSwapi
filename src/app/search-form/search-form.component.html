@@ -3,13 +3,13 @@
 </p>
 <h3>Recherche de personnages ou de planètes</h3>
 <p>Cherchez une planète ou un personnage grâce à son nom</p>
-<form (submit)="search()">
-  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="planets">Planètes
-  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="people">Personnages
+<form (submit)="search()" class ="form-group">
+  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="planets"class="custom-control-input">Planètes
+  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="people"class="custom-control-input">Personnages
   <input class="form-control" name="name" type="text" [(ngModel)]="name" required>
   <button type="submit" class="btn btn-primary">Recherche</button>
 </form>
-<div class="col-6" *ngFor="let planet of planets?.results">
+<div class="" *ngFor="let planet of planets?.results">
   {{planet.name}}
 </div>
 <div *ngIf="planets?.count == 0">Pas de résultats</div>
