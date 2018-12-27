@@ -1,0 +1,15 @@
+<p>
+  search-form works!
+</p>
+<h3>Recherche de personnages ou de planètes</h3>
+<p>Cherchez une planète ou un personnage grâce à son nom</p>
+<form (submit)="search()">
+  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="planets">Planètes
+  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="people">Personnages
+  <input class="form-control" name="name" type="text" [(ngModel)]="name" required>
+  <button type="submit" class="btn btn-primary">Recherche</button>
+</form>
+<div class="col-6" *ngFor="let planet of planets?.results">
+  {{planet.name}}
+</div>
+<div *ngIf="planets?.count == 0">Pas de résultats</div>
