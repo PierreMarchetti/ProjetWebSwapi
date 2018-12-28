@@ -1,2 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+h1 {
+  text-align: center
+}
+
+#menu {
+  margin-bottom: 60px
+}
+
+.row {
+  margin-bottom: 30px;
+}
+
+.show-more {
+  margin-top: 10px;
+}

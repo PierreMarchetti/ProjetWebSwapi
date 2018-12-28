@@ -1,15 +1,34 @@
-<p>
-  search-form works!
-</p>
-<h3>Recherche de personnages ou de planètes</h3>
-<p>Cherchez une planète ou un personnage grâce à son nom</p>
-<form (submit)="search()" class ="form-group">
-  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="planets"class="custom-control-input">Planètes
-  <input type="radio" name="typeSearch" [(ngModel)]="typeSearch" value="people"class="custom-control-input">Personnages
-  <input class="form-control" name="name" type="text" [(ngModel)]="name" required>
-  <button type="submit" class="btn btn-primary">Recherche</button>
-</form>
-<div class="" *ngFor="let planet of planets?.results">
-  {{planet.name}}
-</div>
-<div *ngIf="planets?.count == 0">Pas de résultats</div>
+<div class="row w-100">
+  <div class="col-0 col-sm-0 col-md-2 col-lg-3"></div>
+  <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+    <h1>Recherche de personnages ou de planètes</h1>
+    <form (submit)="search()">
+      <div class="form-group">
+        <label for="nameSearch">Entrez le nom de la planète ou du personnage que vous recherchez</label>
+        <input type="text" id="nameSearch" name="name" [(ngModel)]="name" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="planet" name="typeSearch" [(ngModel)]="typeSearch" value="planet" class="custom-control-input">
+          <label class="custom-control-label" for="planet">Planète</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" id="character" name="typeSearch" [(ngModel)]="typeSearch" value="character" class="custom-control-input">
+          <label class="custom-control-label" for="character">Personnage</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Recherche</button>
+    </form>
+    <div class="list-group" *ngIf="planets">
+      <a href="{{getPlanetId(planet)}}" class="list-group-item list-group-item-action" *ngFor="let planet of planets.results">{{planet.name}}</a>
+    </div>
+    <div class="list-group" *ngIf="characters">
+      <a href="{{getCharacterId(character)}}" class="list-group-item list-group-item-action" *ngFor="let character of characters.results">{{character.name}}</a>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-outline-dark show-more" (click)="showMoreCharacters()" *ngIf="characters?.next">Show more</button>
+      <button class="btn btn-outline-dark show-more" (click)="showMorePlanets()" *ngIf="planets?.next">Show more</button>
+    </div>
+    <div *ngIf="planets?.count == 0 || characters?.count == 0">Pas de résultats</div>
+    <div class="col-0 col-sm-0 col-md-2 col-lg-3"></div>
+  </div>

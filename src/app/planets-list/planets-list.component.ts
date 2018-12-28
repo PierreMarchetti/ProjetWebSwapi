@@ -22,14 +22,19 @@ export class PlanetsListComponent implements OnInit {
     return this.planets.results;
   }
 
+  //charge de nouvelles planètes et les actualise l'affichage
   showMore(){
     this.planetsService.getPlanets(this.planets.next).subscribe(data=>{
       this.planets.results = this.planets.results.concat(data.results);
       this.planets.next = data.next;
       this.planets.count = data.count;
     });
+  }
 
-    //this.planets.results = this.planets.results.concat(this.planets.results);
+  //recupère l'id à partir de l'url de la planète donnée en paramètre pour créer un lien dans l'application
+  getId(planet:Planet) {
+    var urlArray = planet.url.split('/');
+    return 'planets/' + urlArray[urlArray.length-2];
   }
 
   ngOnInit() {

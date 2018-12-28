@@ -17,6 +17,17 @@ export class PlanetComponent implements OnInit {
     planetService.getPlanet(this.route.snapshot.params.id).subscribe(data=>this.planet=data);
   }
 
+  //retourne la gravité sans la valeur chiffrée
+  getGravity(gravity:string) {
+    return gravity.replace(/[0-9]/g, '');
+  }
+
+  //transforme l'url en id
+  getCharacterId(peopleUrl:string) {
+    var urlArray =  peopleUrl.split('/');
+    return '/characters/' + urlArray[urlArray.length-2];
+  }
+
   ngOnInit() {
   }
 

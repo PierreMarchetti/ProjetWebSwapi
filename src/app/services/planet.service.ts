@@ -20,7 +20,7 @@ export class PlanetService {
       planet.residentsName = [];
       planet.residents.map(residentUrl => {
         planet.residentsName.push();
-        this.getPerson(residentUrl).subscribe((data:any)=>planet.residentsName.push(data.name))
+        this.getPerson(residentUrl).subscribe((data:any)=>planet.residentsName[residentUrl] = data.name)
       })
       console.log(planet);
       return planet;

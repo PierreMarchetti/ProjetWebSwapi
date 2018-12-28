@@ -1,8 +1,17 @@
-<p>
-  planet works!
-</p>
-{{planet?.name}}
-
-<div class="col-6" *ngFor="let resident of planet?.residentsName">
-  {{resident}}
+<div class="row w-100">
+  <div class="col-0 col-sm-0 col-md-2 col-lg-3"></div>
+  <div class="col-12 col-sm-12 col-md-8 col-lg-6" *ngIf="planet">
+    <h1>{{planet?.name}}</h1>
+    <ul class='fa-ul'>
+      <li><span class="fa-li"><i class="fab fa-galactic-republic"></i></span><strong>Climat:</strong> {{planet?.climate}}</li>
+      <li><span class="fa-li"><i class="fab fa-galactic-republic"></i></span><strong>Gravité:</strong> {{getGravity(planet?.gravity)}}</li>
+      <li><span class="fa-li"><i class="fab fa-galactic-republic"></i></span><strong>Terrain:</strong> {{planet?.terrain}}</li>
+      <li><span class="fa-li"><i class="fab fa-galactic-republic"></i></span><strong>Population:</strong> {{planet?.population}} habitants</li>
+    </ul>
+    <h2>habitants notables:</h2>
+    <div class="list-group">
+      <a href="{{getCharacterId(resident)}}" class="list-group-item list-group-item-action" *ngFor="let resident of planet?.residents">{{planet.residentsName[resident]}}</a>
+    </div>
+  </div>
+  <div class="col-0 col-sm-0 col-md-2 col-lg-3"></div>
 </div>

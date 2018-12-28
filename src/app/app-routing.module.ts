@@ -3,13 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PlanetsListComponent } from './planets-list/planets-list.component';
 import { PlanetComponent } from './planet/planet.component';
+import { CharactersListComponent } from './characters-list/characters-list.component';
+import { CharacterComponent } from './character/character.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 
 
 
 const routes: Routes = [
   {path: 'planets', component: PlanetsListComponent},
-  {path: 'planet/:id', component: PlanetComponent},
+  {path: 'planets/:id', component: PlanetComponent},
+  {path: 'characters', component: CharactersListComponent},
+  {path: 'characters/:id', component: CharacterComponent},
   {path: 'search', component: SearchFormComponent}
 ];
 
