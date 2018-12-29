@@ -13,6 +13,7 @@ import { PlanetComponent } from './planet/planet.component';
 import { CharactersListComponent } from './characters-list/characters-list.component';
 import { CharacterComponent } from './character/character.component';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SearchFormComponent } from './search-form/search-form.component';
     PlanetComponent,
     CharactersListComponent,
     CharacterComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

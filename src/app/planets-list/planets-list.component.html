@@ -1,13 +1,15 @@
-<div class="row w-100">
-  <div class="col-0 col-sm-0 col-md-2 col-lg-3"></div>
-  <div class="col-12 col-sm-12 col-md-8 col-lg-6">
+<div class='row w-100'>
+  <div class='col-0 col-sm-0 col-md-2 col-lg-3'></div>
+  <div class='col-12 col-sm-12 col-md-8 col-lg-6' *ngIf='planets'>
     <h1>{{planets.count}} Planètes</h1>
-    <div class="list-group">
-      <a href="{{getId(planet)}}" class="list-group-item list-group-item-action" *ngFor="let planet of planets.results">{{planet.name}}</a>
+    <div class='list-group'>
+      <a href='{{urlToIdService.getPlanetId(planet.url)}}' class='list-group-item list-group-item-action' *ngFor='let planet of planets.results'>
+        {{planet.name}}
+      </a>
     </div>
-    <div class="text-center">
-      <button class="btn btn-outline-dark show-more" (click)="showMore()" *ngIf="planets.next">Show more</button>
+    <div class='text-center'>
+      <button class='btn btn-outline-dark show-more' (click)='showMore()' *ngIf='planets.next'>Show more</button>
     </div>
   </div>
-  <div class="col-0 col-sm-0 col-md-2 col-lg-3"></div>
+  <div class='col-0 col-sm-0 col-md-2 col-lg-3'></div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Character} from '../models/character';
 import {Characters} from '../models/characters';
 import {CharactersService} from '../services/characters.service';
+import {UrlToIdService} from '../services/url-to-id.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 
@@ -12,17 +13,14 @@ import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 })
 export class CharactersListComponent implements OnInit {
 
-  characters:Characters = {"count": null, "results":[], "next":null};
+  characters:Characters;
 
-  constructor(private charactersService:CharactersService, private route:ActivatedRoute) {
+
+  constructor(private charactersService:CharactersService, private urlToIdService:UrlToIdService, private route:ActivatedRoute) {
     charactersService.getCharacters().subscribe(data=>this.characters=data);
   }
 
-  getCharacters():Character[] {
-    return this.characters.results;
-  }
-
-  //charge de nouvelles planètes et les actualise l'affichage
+  //charge de nouveaux personnages et actualise la page
   showMore(){
     this.charactersService.getCharacters(this.characters.next).subscribe(data=>{
       this.characters.results = this.characters.results.concat(data.results);
@@ -30,14 +28,6 @@ export class CharactersListComponent implements OnInit {
       this.characters.count = data.count;
     });
   }
-
-  //recupère l'id à partir de l'url du personnage donné en paramètre pour créer un lien dans l'application
-  getId(character:Character) {
-    var urlArray = character.url.split('/');
-    return 'characters/' + urlArray[urlArray.length-2];
-  }
-
-
 
   ngOnInit() {
 

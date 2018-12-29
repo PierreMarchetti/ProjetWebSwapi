@@ -12,19 +12,19 @@ export class CharacterService {
 
   constructor(private httpClient:HttpClient) { }
 
+  /*
+  certaine requête sont bloqués par la same-origin policy du navigateur
+  une url intermédiaire est utilisée pour contourner le problème
+  */
+  corsUrl = 'https://cors-anywhere.herokuapp.com/'
+
   //recupère la planète désirée de l'api
   getCharacter(id:number) {
-    return this.httpClient.get<Character>(`https://cors-anywhere.herokuapp.com/https://swapi.co/api/people/`+id)
+    return this.httpClient.get<Character>(this.corsUrl + 'https://swapi.co/api/people/'+id)
     //parcours les url des résidents liés à la planète et récupère leurs noms
     .pipe(map((character) => {
-    this.getPlanet(character.homeworld).subscribe((data:any)=>character.homeworldName = data.name)
-
-      console.log(character);
+    this.httpClient.get(character.homeworld).subscribe((data:any)=>character.homeworldName = data.name)
       return character;
     }))
-  }
-
-  getPlanet(url:string) {
-    return this.httpClient.get(url);
   }
 }

@@ -12,22 +12,23 @@ export class PlanetService {
 
   constructor(private httpClient:HttpClient) { }
 
+  /*
+  certaine requête sont bloqués par la same-origin policy du navigateur
+  une url intermédiaire est utilisée pour contourner le problème
+  */
+  corsUrl = 'https://cors-anywhere.herokuapp.com/'
+
   //recupère la planète désirée de l'api
   getPlanet(id:number) {
-    return this.httpClient.get<Planet>(`https://cors-anywhere.herokuapp.com/https://swapi.co/api/planets/`+id)
+    return this.httpClient.get<Planet>(this.corsUrl + 'https://swapi.co/api/planets/'+id)
     //parcours les url des résidents liés à la planète et récupère leurs noms
     .pipe(map((planet) => {
       planet.residentsName = [];
       planet.residents.map(residentUrl => {
         planet.residentsName.push();
-        this.getPerson(residentUrl).subscribe((data:any)=>planet.residentsName[residentUrl] = data.name)
+        this.httpClient.get(residentUrl).subscribe((data:any)=>planet.residentsName[residentUrl] = data.name)
       })
-      console.log(planet);
       return planet;
     }))
-  }
-
-  getPerson(url:string) {
-    return this.httpClient.get(url);
   }
 }
