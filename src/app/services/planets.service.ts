@@ -12,7 +12,7 @@ export class PlanetsService {
 
   constructor(private httpClient:HttpClient) { }
 
-  //recupère les planètes de l'api
+  //recupère des planètes de l'api
   getPlanets(url?:string) {
     return this.httpClient.get<Planets>(url ? url : `https://swapi.co/api/planets/`);
   }

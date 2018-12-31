@@ -3,10 +3,10 @@
   <div class='col-12 col-sm-12 col-md-8 col-lg-6' *ngIf='characters'>
     <h1>{{characters.count}} Personnages</h1>
     <div class='list-group'>
-      <a href='{{urlToIdService.getCharacterId(character.url)}}' class='list-group-item list-group-item-action' *ngFor='let character of characters.results'>{{character.name}}</a>
+      <a href='{{urlToRouteService.getCharacterRoute(character.url)}}' class='list-group-item list-group-item-action' *ngFor='let character of characters.results'>{{character.name}}</a>
     </div>
     <div class='text-center'>
-      <button class='btn btn-outline-dark show-more' (click)='showMore()' *ngIf='characters.next'>Show more</button>
+      <button class='btn btn-outline-dark show-more' (click)='showMore()' *ngIf='characters.next'>Afficher Plus</button>
     </div>
   </div>
   <div class='col-0 col-sm-0 col-md-2 col-lg-3'></div>

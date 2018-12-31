@@ -12,7 +12,7 @@ export class CharactersService {
 
   constructor(private httpClient:HttpClient) { }
 
-  //recupère les personnes de l'api
+  //recupère des personnes de l'api
   getCharacters(url?:string) {
     return this.httpClient.get<Characters>(url ? url : `https://swapi.co/api/people/`);
   }

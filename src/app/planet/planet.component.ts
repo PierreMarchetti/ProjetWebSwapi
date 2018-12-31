@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Planet} from '../models/planet';
 import {PlanetService} from '../services/planet.service';
-import {UrlToIdService} from '../services/url-to-id.service';
+import {UrlToRouteService} from '../services/url-to-route.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 
@@ -14,7 +14,7 @@ export class PlanetComponent implements OnInit {
 
   planet:Planet;
 
-  constructor(private planetService:PlanetService, private urlToIdService:UrlToIdService, private route:ActivatedRoute) {
+  constructor(private planetService:PlanetService, private urlToRouteService:UrlToRouteService, private route:ActivatedRoute) {
     planetService.getPlanet(this.route.snapshot.params.id).subscribe(data=>this.planet=data);
   }
 

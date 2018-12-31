@@ -22,7 +22,7 @@
         <strong>Genre:</strong> {{character.gender}}
       </li>
       <li><span class='fa-li'><i class='fab fa-galactic-republic'></i></span>
-        <strong>Planète d'origine:</strong><a href='{{urlToIdService.getPlanetId(character.homeworld)}}'> {{character.homeworldName}}</a>
+        <strong>Planète d'origine:</strong><a href='{{urlToRouteService.getPlanetRoute(character.homeworld)}}'> {{character.homeworldName}}</a>
       </li>
     </ul>
   </div>

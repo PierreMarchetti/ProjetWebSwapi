@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Character} from '../models/character';
 import {Characters} from '../models/characters';
 import {CharactersService} from '../services/characters.service';
-import {UrlToIdService} from '../services/url-to-id.service';
+import {UrlToRouteService} from '../services/url-to-route.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 
@@ -16,7 +16,7 @@ export class CharactersListComponent implements OnInit {
   characters:Characters;
 
 
-  constructor(private charactersService:CharactersService, private urlToIdService:UrlToIdService, private route:ActivatedRoute) {
+  constructor(private charactersService:CharactersService, private urlToRouteService:UrlToRouteService, private route:ActivatedRoute) {
     charactersService.getCharacters().subscribe(data=>this.characters=data);
   }
 

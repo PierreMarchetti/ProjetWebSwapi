@@ -20,14 +20,14 @@
       <button type='submit' class='btn btn-primary'>Recherche</button>
     </form>
     <div class='list-group' *ngIf='planets'>
-      <a href='{{urlToIdService.getPlanetId(planet.url)}}' class='list-group-item list-group-item-action' *ngFor='let planet of planets.results'>{{planet.name}}</a>
+      <a href='{{urlToRouteService.getPlanetRoute(planet.url)}}' class='list-group-item list-group-item-action' *ngFor='let planet of planets.results'>{{planet.name}}</a>
     </div>
     <div class='list-group' *ngIf='characters'>
-      <a href='{{urlToIdService.getCharacterId(character.url)}}' class='list-group-item list-group-item-action' *ngFor='let character of characters.results'>{{character.name}}</a>
+      <a href='{{urlToRouteService.getCharacterRoute(character.url)}}' class='list-group-item list-group-item-action' *ngFor='let character of characters.results'>{{character.name}}</a>
     </div>
     <div class='text-center'>
-      <button class='btn btn-outline-dark show-more' (click)='showMoreCharacters()' *ngIf='characters?.next'>Show more</button>
-      <button class='btn btn-outline-dark show-more' (click)='showMorePlanets()' *ngIf='planets?.next'>Show more</button>
+      <button class='btn btn-outline-dark show-more' (click)='showMoreCharacters()' *ngIf='characters?.next'>Afficher Plus</button>
+      <button class='btn btn-outline-dark show-more' (click)='showMorePlanets()' *ngIf='planets?.next'>Afficher Plus</button>
     </div>
     <div *ngIf='planets?.count == 0 || characters?.count == 0'>Pas de résultats</div>
     <div class='col-0 col-sm-0 col-md-2 col-lg-3'></div>

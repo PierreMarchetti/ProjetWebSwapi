@@ -8,18 +8,18 @@ import {Planet} from '../models/planet';
 @Injectable({
   providedIn: 'root'
 })
-export class UrlToIdService {
+export class UrlToRouteService {
 
   constructor(private httpClient:HttpClient) { }
 
   //retourne le lien vers la page du personnage à partir de l'url donné en paramètre
-  getCharacterId(characterUrl:string) {
+  getCharacterRoute(characterUrl:string) {
     var urlArray = characterUrl.split('/');
     return 'characters/' + urlArray[urlArray.length-2];
   }
 
   //retourne le lien vers la page de la planète à partir de l'url donné en paramètre
-  getPlanetId(planetUrl:string) {
+  getPlanetRoute(planetUrl:string) {
     var urlArray = planetUrl.split('/');
     return 'planets/' + urlArray[urlArray.length-2];
   }

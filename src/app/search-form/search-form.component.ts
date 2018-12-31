@@ -5,7 +5,7 @@ import {Character} from '../models/character';
 import {Characters} from '../models/characters';
 import {PlanetsService} from '../services/planets.service';
 import {CharactersService} from '../services/characters.service';
-import {UrlToIdService} from '../services/url-to-id.service';
+import {UrlToRouteService} from '../services/url-to-route.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 
@@ -22,7 +22,7 @@ export class SearchFormComponent implements OnInit {
   characters: Characters;
   url:string;
 
-  constructor(private planetsService:PlanetsService, private charactersService:CharactersService, private urlToIdService:UrlToIdService, private route:ActivatedRoute) {
+  constructor(private planetsService:PlanetsService, private charactersService:CharactersService, private urlToRouteService:UrlToRouteService, private route:ActivatedRoute) {
   }
 
   ngOnInit() {

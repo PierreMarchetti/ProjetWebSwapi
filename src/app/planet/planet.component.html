@@ -8,10 +8,10 @@
       <li><span class='fa-li'><i class='fab fa-galactic-republic'></i></span><strong>Terrain:</strong> {{planet.terrain}}</li>
       <li><span class='fa-li'><i class='fab fa-galactic-republic'></i></span><strong>Population:</strong> {{planet.population}} habitants</li>
     </ul>
-    <h2 *ngIf='planet.residents == [];else noResidents'>habitants notables:</h2>
+    <h2 *ngIf='planet.residents == [];else noResidents'>habitants connus:</h2>
     <ng-template #noResidents>Pas d'habitants connus</ng-template>
     <div class='list-group'>
-      <a href='{{urlToIdService.getCharacterId(resident)}}' class='list-group-item list-group-item-action' *ngFor='let resident of planet.residents'>
+      <a href='{{urlToRouteService.getCharacterRoute(resident)}}' class='list-group-item list-group-item-action' *ngFor='let resident of planet.residents'>
         {{planet.residentsName[resident]}}
       </a>
     </div>

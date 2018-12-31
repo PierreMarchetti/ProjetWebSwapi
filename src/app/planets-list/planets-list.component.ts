@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Planet} from '../models/planet';
 import {Planets} from '../models/planets';
 import {PlanetsService} from '../services/planets.service';
-import {UrlToIdService} from '../services/url-to-id.service';
+import {UrlToRouteService} from '../services/url-to-route.service';
 import {ActivatedRoute, ActivatedRouteSnapshot} from '@angular/router';
 
 
@@ -15,7 +15,7 @@ export class PlanetsListComponent implements OnInit {
 
   planets:Planets;
 
-  constructor(private planetsService:PlanetsService, private urlToIdService:UrlToIdService, private route:ActivatedRoute) {
+  constructor(private planetsService:PlanetsService, private urlToRouteService:UrlToRouteService, private route:ActivatedRoute) {
     planetsService.getPlanets().subscribe(data=>this.planets=data);
   }
 
